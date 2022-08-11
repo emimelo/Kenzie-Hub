@@ -110,6 +110,7 @@ const FormRegister = () => {
         disabled={isDisabled}
         style={{
           backgroundColor: isDisabled && "var(--color-primary-negative)",
+          cursor: isDisabled && "default",
         }}
       >
         Cadastrar

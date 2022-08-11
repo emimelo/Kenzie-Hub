@@ -74,6 +74,7 @@ const FormLogin = () => {
         disabled={isDisabled}
         style={{
           backgroundColor: isDisabled && "var(--color-primary-negative)",
+          cursor: isDisabled && "default",
         }}
       >
         Entrar
