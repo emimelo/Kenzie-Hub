@@ -7,8 +7,10 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import { Form } from "./styles";
+import { useState } from "react";
 
 const FormRegister = () => {
+  const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
 
   const {
@@ -33,7 +35,7 @@ const FormRegister = () => {
         navigate("/login", { replace: true });
       })
       .catch(() =>
-        toast.error("Ops! Algo deu errado", {
+        toast.error("Ops! Já existe um cadastro com este email.", {
           style: {
             borderRadius: "4px",
             background: "var(--color-grey-2)",
@@ -53,6 +55,7 @@ const FormRegister = () => {
         type="text"
         placeholder="Digite aqui seu nome"
         {...register("name")}
+        onChange={() => setIsDisabled(false)}
       />
       <span>{errors.name?.message}</span>
 
@@ -102,7 +105,15 @@ const FormRegister = () => {
         <option value="Sexto módulo">Sexto módulo</option>
       </select>
 
-      <button type="submit">Cadastrar</button>
+      <button
+        type="submit"
+        disabled={isDisabled}
+        style={{
+          backgroundColor: isDisabled && "var(--color-primary-negative)",
+        }}
+      >
+        Cadastrar
+      </button>
     </Form>
   );
 };
