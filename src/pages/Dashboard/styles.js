@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+  height: 100vh;
+`;
+
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -114,4 +118,4 @@ const ContainerMain = styled.main`
     }
   }
 `;
-export { Nav, Header, ContainerMain };
+export { Container, Nav, Header, ContainerMain };

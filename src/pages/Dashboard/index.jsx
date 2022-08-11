@@ -1,4 +1,4 @@
-import { Nav, Header, ContainerMain } from "./styles";
+import { Container, Nav, Header, ContainerMain } from "./styles";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -25,7 +25,7 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <Container>
       <Nav>
         <h1>Kenzie Hub</h1>
         <Link to={"/login"} onClick={clearLocalStorage}>
@@ -49,7 +49,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </ContainerMain>
-    </>
+    </Container>
   );
 };
 
