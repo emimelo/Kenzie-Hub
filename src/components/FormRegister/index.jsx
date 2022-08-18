@@ -1,17 +1,14 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "../../validators/registerUser";
-import api from "../../services/api";
-
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-
 import { Form } from "./styles";
-import { useState } from "react";
+import schema from "../../validators/registerUser";
+
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthContext";
 
 const FormRegister = () => {
   const [isDisabled, setIsDisabled] = useState(true);
-  const navigate = useNavigate();
+  const { signRegister } = useContext(AuthContext);
 
   const {
     register,
@@ -21,32 +18,8 @@ const FormRegister = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
-    await api
-      .post("/users", data)
-      .then(() => {
-        toast.success("Conta criada com sucesso!", {
-          style: {
-            borderRadius: "4px",
-            background: "var(--color-grey-2)",
-            color: "var(--color-grey-0)",
-          },
-        });
-        navigate("/login", { replace: true });
-      })
-      .catch(() =>
-        toast.error("Ops! Já existe um cadastro com este email.", {
-          style: {
-            borderRadius: "4px",
-            background: "var(--color-grey-2)",
-            color: "var(--color-grey-0)",
-          },
-        })
-      );
-  };
-
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(signRegister)}>
       <h2>Crie sua conta</h2>
       <p>Rápido e grátis, vamos nessa</p>
 

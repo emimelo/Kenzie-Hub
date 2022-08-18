@@ -1,55 +1,34 @@
-import { Container, Nav, Header, ContainerMain } from "./styles";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
-import api from "../../services/api";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthContext";
+
+import { Container, ContainerMain } from "./styles";
+import Modal from "../../components/Modal";
+import Nav from "../../components/Nav";
+import Header from "../../components/Header";
+import Main from "../../components/Main";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null);
+  const { user, loading } = useContext(AuthContext);
+  const [modal, setModal] = useState(false);
 
-  useEffect(() => {
-    async function loadUser() {
-      const id = localStorage.getItem("@user:id");
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
-      if (id) {
-        const userLogin = await api.get(`/users/${id}`);
-        return setUser(userLogin);
-      }
-    }
-
-    loadUser();
-  }, []);
-
-  const clearLocalStorage = () => {
-    localStorage.clear();
-  };
-
-  return (
-    <Container>
-      <Nav>
-        <h1>Kenzie Hub</h1>
-        <Link to={"/login"} onClick={clearLocalStorage}>
-          Sair
-        </Link>
-      </Nav>
-      <Header>
-        <div>
-          <h2>Olá, {user?.data.name}</h2>
-          <p>{user?.data.course_module}</p>
-        </div>
-      </Header>
-      <ContainerMain>
-        <ul>
-          <li>
-            <h2>Que pena estamos em desenvolvimento :(</h2>
-            <p>
-              Nossa aplicação está em desenvolvimento, em breve teremos
-              novidades
-            </p>
-          </li>
-        </ul>
-      </ContainerMain>
-    </Container>
+  return user ? (
+    <>
+      <Container>
+        <Nav />
+        <Header />
+        <ContainerMain>
+          <Main setModal={setModal} />
+        </ContainerMain>
+      </Container>
+      {modal && <Modal setModal={setModal} />}
+    </>
+  ) : (
+    <Navigate to="/login" replace />
   );
 };
 

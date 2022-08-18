@@ -1,18 +1,16 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Form } from "./styles";
 import schema from "../../validators/loginUser";
-import api from "../../services/api";
 
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-import { Form } from "./styles";
-import toast from "react-hot-toast";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthContext";
 
 const FormLogin = () => {
   const [isDisabled, setIsDisabled] = useState(true);
-  const navigate = useNavigate();
+  const { signIn } = useContext(AuthContext);
 
   const {
     register,
@@ -22,35 +20,8 @@ const FormLogin = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    api
-      .post("/sessions", data)
-      .then((res) => {
-        localStorage.setItem("@user:token", res.data.token);
-        localStorage.setItem("@user:id", res.data.user.id);
-
-        toast.success("Bem vindo(a)!", {
-          style: {
-            borderRadius: "4px",
-            background: "var(--color-grey-2)",
-            color: "var(--color-grey-0)",
-          },
-        });
-        navigate("/dashboard", { replace: true });
-      })
-      .catch(() =>
-        toast.error("Email e/ou senha inválidos.", {
-          style: {
-            borderRadius: "4px",
-            background: "var(--color-grey-2)",
-            color: "var(--color-grey-0)",
-          },
-        })
-      );
-  };
-
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(signIn)}>
       <h2>Login</h2>
       <label htmlFor="email">Email</label>
       <input
