@@ -52,6 +52,7 @@ const AuthProvider = ({ children }) => {
           setUser(data);
           setTech(data.techs);
         } catch {
+          localStorage.clear();
           navigate("/login", { replace: true });
         }
       }
