@@ -100,8 +100,6 @@ const AuthProvider = ({ children }: ChildrenProps) => {
           localStorage.clear();
           navigate("/login", { replace: true });
         }
-      } else {
-        navigate("/login", { replace: true });
       }
       setLoading(false);
     }
