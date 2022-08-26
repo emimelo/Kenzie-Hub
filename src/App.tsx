@@ -1,7 +1,6 @@
 import Routes from "./routes";
 import GlobalReset from "./styles/reset";
 import GlobalBase from "./styles/base";
-import React from "react";
 
 import { Toaster } from "react-hot-toast";
 

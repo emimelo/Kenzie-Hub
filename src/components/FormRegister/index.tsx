@@ -2,9 +2,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form } from "./styles";
 import schema from "../../validators/registerUser";
-import React from "react";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 
 export interface IUserRegister {
@@ -18,7 +17,6 @@ export interface IUserRegister {
 }
 
 const FormRegister = () => {
-  const [isDisabled, setIsDisabled] = useState(true);
   const { signRegister } = useContext(AuthContext);
 
   const {
@@ -39,7 +37,6 @@ const FormRegister = () => {
         type="text"
         placeholder="Digite aqui seu nome"
         {...register("name")}
-        onChange={() => setIsDisabled(false)}
       />
       <span>{errors.name?.message}</span>
 
@@ -89,16 +86,7 @@ const FormRegister = () => {
         <option value="Sexto módulo">Sexto módulo</option>
       </select>
 
-      <button
-        type="submit"
-        disabled={isDisabled}
-        style={{
-          backgroundColor: isDisabled && "var(--color-primary-negative)",
-          cursor: isDisabled && "default",
-        }}
-      >
-        Cadastrar
-      </button>
+      <button type="submit">Cadastrar</button>
     </Form>
   );
 };

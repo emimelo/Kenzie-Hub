@@ -1,12 +1,11 @@
 import { List } from "./styles";
 import { CgTrash } from "react-icons/cg";
-import React from "react";
 
 import api from "../../services/api";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 
-const ListTech = ({ list }) => {
+const ListTech = ({ list }: any) => {
   const { setTech } = useContext(AuthContext);
 
   const techDelete = async () => {

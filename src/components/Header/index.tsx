@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
-import React from "react";
 
 import { HeaderStyle } from "./styles";
 

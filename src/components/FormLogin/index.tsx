@@ -2,11 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form } from "./styles";
 import schema from "../../validators/loginUser";
-import React from "react";
 
 import { Link } from "react-router-dom";
 
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 
 export interface IUserLogin {
@@ -15,7 +14,6 @@ export interface IUserLogin {
 }
 
 const FormLogin = () => {
-  const [isDisabled, setIsDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
 
   const {
@@ -34,7 +32,6 @@ const FormLogin = () => {
         type="text"
         placeholder="Digite aqui seu email"
         {...register("email")}
-        onChange={() => setIsDisabled(false)}
       />
       <span>{errors.email?.message}</span>
 
@@ -46,16 +43,7 @@ const FormLogin = () => {
       />
       <span>{errors.password?.message}</span>
 
-      <button
-        type="submit"
-        disabled={isDisabled}
-        style={{
-          backgroundColor: isDisabled && "var(--color-primary-negative)",
-          cursor: isDisabled && "default",
-        }}
-      >
-        Entrar
-      </button>
+      <button type="submit">Entrar</button>
 
       <p>Ainda não possui uma conta?</p>
       <Link to={"/register"}>Cadastre-se</Link>

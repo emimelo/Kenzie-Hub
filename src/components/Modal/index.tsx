@@ -4,8 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import schema from "../../validators/modalCreateTech";
 
-import { useContext, useState } from "react";
-import React from "react";
+import { useContext } from "react";
 
 import {
   ContainerModal,
@@ -25,8 +24,8 @@ interface ITech {
   status: string;
 }
 
-const Modal = ({ setModal }: React.Dispatch<React.SetStateAction<boolean>>) => {
-  const { setTech } = useContext(AuthContext);
+const Modal = () => {
+  const { setTech, setModal } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -34,7 +33,6 @@ const Modal = ({ setModal }: React.Dispatch<React.SetStateAction<boolean>>) => {
   } = useForm<ITech>({
     resolver: yupResolver(schema),
   });
-  const [isDisabled, setIsDisabled] = useState(true);
 
   const createTech = async (data: ITech) => {
     try {
@@ -72,7 +70,6 @@ const Modal = ({ setModal }: React.Dispatch<React.SetStateAction<boolean>>) => {
               type="text"
               placeholder="Tecnologia"
               {...register("title")}
-              onChange={() => setIsDisabled(false)}
             />
             <span>{errors.title?.message}</span>
 
@@ -82,16 +79,7 @@ const Modal = ({ setModal }: React.Dispatch<React.SetStateAction<boolean>>) => {
               <option value="Intermediário">Intermediário</option>
               <option value="Avançado">Avançado</option>
             </select>
-            <button
-              type="submit"
-              disabled={isDisabled}
-              style={{
-                backgroundColor: isDisabled && "var(--color-primary-negative)",
-                cursor: isDisabled && "default",
-              }}
-            >
-              Cadastrar
-            </button>
+            <button type="submit">Cadastrar</button>
           </form>
         </ModalForm>
       </Container>

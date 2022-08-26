@@ -1,6 +1,5 @@
 import FormRegister from "../../components/FormRegister";
 import { Link } from "react-router-dom";
-import React from "react";
 
 import { ContainerMain, ContainerForm } from "./styles";
 

@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 import { IoIosAdd } from "react-icons/io";
-import React from "react";
 
 import { CreateTech, DivNoTech } from "./styles";
 import ListTech from "../ListTech";
 
-const Main = ({ setModal }) => {
-  const { tech } = useContext(AuthContext);
+const Main = () => {
+  const { tech, setModal } = useContext(AuthContext);
 
   return (
     <>

@@ -15,13 +15,15 @@ interface ChildrenProps {
 interface IAuthContext {
   signRegister: (data: IUserRegister) => Promise<void>;
   signIn: (data: IUserLogin) => Promise<void>;
-  loading: boolean;
   setTech: React.Dispatch<React.SetStateAction<ITech[]>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  modal: boolean;
+  loading: boolean;
   user: IUser;
   tech: ITech[];
 }
 
-interface ITech {
+export interface ITech {
   id: string;
   title: string;
   status: string;
@@ -54,6 +56,7 @@ const AuthProvider = ({ children }: ChildrenProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [tech, setTech] = useState<ITech[]>([] as ITech[]);
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const signRegister = async (data: IUserRegister) => {
     try {
@@ -90,13 +93,15 @@ const AuthProvider = ({ children }: ChildrenProps) => {
         try {
           api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-          const { data } = await api.get(`/profile`);
+          const { data } = await api.get<any>(`/profile`);
           setUser(data);
           setTech(data.techs);
         } catch {
           localStorage.clear();
           navigate("/login", { replace: true });
         }
+      } else {
+        navigate("/login", { replace: true });
       }
       setLoading(false);
     }
@@ -105,7 +110,16 @@ const AuthProvider = ({ children }: ChildrenProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signRegister, setTech, user, loading, tech }}
+      value={{
+        signIn,
+        signRegister,
+        setTech,
+        user,
+        loading,
+        tech,
+        setModal,
+        modal,
+      }}
     >
       {children}
     </AuthContext.Provider>
