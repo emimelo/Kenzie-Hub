@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthContext";
+import React from "react";
 
 import { Container, ContainerMain } from "./styles";
 import Modal from "../../components/Modal";

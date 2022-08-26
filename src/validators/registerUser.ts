@@ -8,7 +8,7 @@ const schema = yup.object({
     .min(8, "No mínimo 8 caracteres")
     .required("Campo obrigatório")
     .matches(
-      "(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])",
+      /(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])/,
       "Deve conter letra maiúscula, minúscula e caractere especial"
     ),
   confirmPassword: yup

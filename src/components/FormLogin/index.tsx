@@ -2,11 +2,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form } from "./styles";
 import schema from "../../validators/loginUser";
+import React from "react";
 
 import { Link } from "react-router-dom";
 
 import { useState, useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
+
+export interface IUserLogin {
+  email: string;
+  password: string;
+}
 
 const FormLogin = () => {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -16,7 +22,7 @@ const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserLogin>({
     resolver: yupResolver(schema),
   });
 

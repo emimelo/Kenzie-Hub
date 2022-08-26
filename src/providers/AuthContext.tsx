@@ -1,19 +1,61 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, ReactNode } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 import toast from "react-hot-toast";
 import ToastStyle from "../components/ToastStyle/styles";
+import { IUserRegister } from "../components/FormRegister";
+import { IUserLogin } from "../components/FormLogin";
 
-export const AuthContext = createContext({});
+interface ChildrenProps {
+  children: ReactNode;
+}
 
-const AuthProvider = ({ children }) => {
+interface IAuthContext {
+  signRegister: (data: IUserRegister) => Promise<void>;
+  signIn: (data: IUserLogin) => Promise<void>;
+  loading: boolean;
+  setTech: React.Dispatch<React.SetStateAction<ITech[]>>;
+  user: IUser;
+  tech: ITech[];
+}
+
+interface ITech {
+  id: string;
+  title: string;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  course_module: string;
+  bio: string;
+  contact: string;
+  avatar_url: string;
+  techs: ITech[];
+  created_at: Date;
+  updated_at: Date;
+}
+
+interface IResponseSessions {
+  user: IUser;
+  token: string;
+}
+
+export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+
+const AuthProvider = ({ children }: ChildrenProps) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const [tech, setTech] = useState([]);
+  const [user, setUser] = useState<IUser>({} as IUser);
+  const [tech, setTech] = useState<ITech[]>([] as ITech[]);
   const [loading, setLoading] = useState(true);
 
-  const signRegister = async (data) => {
+  const signRegister = async (data: IUserRegister) => {
     try {
       await api.post("/users", data);
 
@@ -24,9 +66,9 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const signIn = async (data) => {
+  const signIn = async (data: IUserLogin) => {
     try {
-      const response = await api.post("/sessions", data);
+      const response = await api.post<IResponseSessions>("/sessions", data);
       const { user: userResponse, token } = response.data;
 
       localStorage.setItem("@user:token", token);
@@ -46,7 +88,7 @@ const AuthProvider = ({ children }) => {
 
       if (token) {
         try {
-          api.defaults.headers.authorization = `Bearer ${token}`;
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
 
           const { data } = await api.get(`/profile`);
           setUser(data);

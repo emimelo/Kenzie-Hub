@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavStyle } from "./styles";
+import React from "react";
 
 const Nav = () => {
   const clearLocalStorage = () => {

@@ -1,5 +1,6 @@
 import { List } from "./styles";
 import { CgTrash } from "react-icons/cg";
+import React from "react";
 
 import api from "../../services/api";
 import { useContext } from "react";
@@ -10,7 +11,7 @@ const ListTech = ({ list }) => {
 
   const techDelete = async () => {
     const token = localStorage.getItem("@user:token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     await api.delete(`/users/techs/${list.id}`);
 
     setTech((oldTechs) => oldTechs.filter((elem) => elem.id !== list.id));

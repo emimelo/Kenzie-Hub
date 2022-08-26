@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import schema from "../../validators/modalCreateTech";
 
 import { useContext, useState } from "react";
+import React from "react";
 
 import {
   ContainerModal,
@@ -19,22 +20,27 @@ import toast from "react-hot-toast";
 import ToastStyle from "../ToastStyle/styles";
 import { AuthContext } from "../../providers/AuthContext";
 
-const Modal = ({ setModal }) => {
+interface ITech {
+  title: string;
+  status: string;
+}
+
+const Modal = ({ setModal }: React.Dispatch<React.SetStateAction<boolean>>) => {
   const { setTech } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ITech>({
     resolver: yupResolver(schema),
   });
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const createTech = async (data) => {
+  const createTech = async (data: ITech) => {
     try {
       const token = localStorage.getItem("@user:token");
 
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
 
       const { data: newTech } = await api.post("/users/techs", data);
 
@@ -71,7 +77,7 @@ const Modal = ({ setModal }) => {
             <span>{errors.title?.message}</span>
 
             <label htmlFor="status">Selecionar status</label>
-            <select name="" id="" {...register("status")}>
+            <select {...register("status")}>
               <option value="Iniciante">Iniciante</option>
               <option value="Intermediário">Intermediário</option>
               <option value="Avançado">Avançado</option>

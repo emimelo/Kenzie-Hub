@@ -4,6 +4,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
+import React from "react";
 
 function RoutesMain() {
   const location = useLocation();
