@@ -24,11 +24,7 @@ const ContainerMain = styled.main`
 
   ul {
     width: 100%;
-    max-height: 23.25rem;
-
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    height: 23.25rem;
 
     padding: 1.375rem 0rem;
     margin-bottom: 1.25rem;
@@ -37,6 +33,27 @@ const ContainerMain = styled.main`
     background-color: var(--color-grey-3);
 
     overflow-x: auto;
+
+    .transition-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .item-enter {
+      opacity: 0;
+    }
+    .item-enter-active {
+      opacity: 1;
+      transition: opacity 200ms ease-in;
+    }
+    .item-exit {
+      opacity: 1;
+    }
+    .item-exit-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
   }
 
   @media screen and (min-width: 768px) {

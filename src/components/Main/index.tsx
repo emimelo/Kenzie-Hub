@@ -6,6 +6,7 @@ import animate from "../../assets/animate.json";
 
 import { CreateTech, DivNoTech } from "./styles";
 import ListTech from "../ListTech";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Main = () => {
   const { tech, setModal } = useContext(AuthContext);
@@ -27,9 +28,13 @@ const Main = () => {
       </CreateTech>
       {tech.length > 0 ? (
         <ul>
-          {tech.map((list) => (
-            <ListTech key={list.id} list={list} />
-          ))}
+          <TransitionGroup className="transition-list">
+            {tech.map((list) => (
+              <CSSTransition timeout={200} classNames="item">
+                <ListTech key={list.id} list={list} />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </ul>
       ) : (
         <DivNoTech>

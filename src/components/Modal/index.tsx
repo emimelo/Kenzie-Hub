@@ -18,7 +18,7 @@ import { IoIosClose } from "react-icons/io";
 import toast from "react-hot-toast";
 import ToastStyle from "../ToastStyle/styles";
 import { AuthContext } from "../../providers/AuthContext";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ITech {
   title: string;
@@ -26,7 +26,7 @@ interface ITech {
 }
 
 const Modal = () => {
-  const { setTech, setModal } = useContext(AuthContext);
+  const { setTech, setModal, modal } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -55,38 +55,52 @@ const Modal = () => {
     }
   };
 
-  return (
-    <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}>
-      <ContainerModal>
-        <Container>
-          <ModalForm>
-            <DivClose>
-              <h2>Cadastrar Tecnologia</h2>
-              <CloseModal onClick={() => setModal(false)}>
-                <IoIosClose />
-              </CloseModal>
-            </DivClose>
-            <form onSubmit={handleSubmit(createTech)}>
-              <label htmlFor="title">Nome</label>
-              <input
-                type="text"
-                placeholder="Tecnologia"
-                {...register("title")}
-              />
-              <span>{errors.title?.message}</span>
+  const backdrop = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
 
-              <label htmlFor="status">Selecionar status</label>
-              <select {...register("status")}>
-                <option value="Iniciante">Iniciante</option>
-                <option value="Intermediário">Intermediário</option>
-                <option value="Avançado">Avançado</option>
-              </select>
-              <button type="submit">Cadastrar</button>
-            </form>
-          </ModalForm>
-        </Container>
-      </ContainerModal>
-    </motion.div>
+  return (
+    <AnimatePresence>
+      {modal && (
+        <motion.div
+          variants={backdrop}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          <ContainerModal>
+            <Container>
+              <ModalForm>
+                <DivClose>
+                  <h2>Cadastrar Tecnologia</h2>
+                  <CloseModal onClick={() => setModal(false)}>
+                    <IoIosClose />
+                  </CloseModal>
+                </DivClose>
+                <form onSubmit={handleSubmit(createTech)}>
+                  <label htmlFor="title">Nome</label>
+                  <input
+                    type="text"
+                    placeholder="Tecnologia"
+                    {...register("title")}
+                  />
+                  <span>{errors.title?.message}</span>
+
+                  <label htmlFor="status">Selecionar status</label>
+                  <select {...register("status")}>
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+                  <button type="submit">Cadastrar</button>
+                </form>
+              </ModalForm>
+            </Container>
+          </ContainerModal>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

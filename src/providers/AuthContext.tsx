@@ -96,6 +96,7 @@ const AuthProvider = ({ children }: ChildrenProps) => {
           const { data } = await api.get<any>("/profile");
           setUser(data);
           setTech(data.techs);
+          navigate("/dashboard", { replace: true });
         } catch {
           localStorage.clear();
           navigate("/login", { replace: true });
