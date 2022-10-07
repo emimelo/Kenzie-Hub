@@ -1,12 +1,21 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 import { IoIosAdd } from "react-icons/io";
+import { useLottie } from "lottie-react";
+import animate from "../../assets/animate.json";
 
 import { CreateTech, DivNoTech } from "./styles";
 import ListTech from "../ListTech";
 
 const Main = () => {
   const { tech, setModal } = useContext(AuthContext);
+
+  const options = {
+    animationData: animate,
+    loop: true,
+  };
+
+  const { View } = useLottie(options);
 
   return (
     <>
@@ -24,7 +33,8 @@ const Main = () => {
         </ul>
       ) : (
         <DivNoTech>
-          <p>Você ainda não possui uma tecnologia cadastrada :(</p>
+          <p>Você ainda não possui uma tecnologia cadastrada</p>
+          <div>{View}</div>
         </DivNoTech>
       )}
     </>

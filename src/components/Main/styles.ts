@@ -40,14 +40,28 @@ const CreateTech = styled.div`
 `;
 
 const DivNoTech = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
+
   width: 100%;
-  height: 50vh;
+  margin-top: 3.125rem;
+
+  div {
+    width: 12.5rem;
+    margin: 0 auto;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 1.125rem;
+
+    div {
+      width: 17.5rem;
+    }
   }
 `;
 

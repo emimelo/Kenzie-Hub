@@ -93,7 +93,7 @@ const AuthProvider = ({ children }: ChildrenProps) => {
         try {
           api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-          const { data } = await api.get<any>(`/profile`);
+          const { data } = await api.get<any>("/profile");
           setUser(data);
           setTech(data.techs);
         } catch {
@@ -115,8 +115,8 @@ const AuthProvider = ({ children }: ChildrenProps) => {
         user,
         loading,
         tech,
-        setModal,
         modal,
+        setModal,
       }}
     >
       {children}

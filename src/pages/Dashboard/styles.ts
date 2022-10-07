@@ -24,7 +24,7 @@ const ContainerMain = styled.main`
 
   ul {
     width: 100%;
-    height: 23.25rem;
+    max-height: 23.25rem;
 
     display: flex;
     flex-direction: column;

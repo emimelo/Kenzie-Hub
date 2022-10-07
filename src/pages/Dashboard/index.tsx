@@ -7,6 +7,7 @@ import Modal from "../../components/Modal";
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
+import { motion } from "framer-motion";
 
 const Dashboard = () => {
   const { user, loading, modal } = useContext(AuthContext);
@@ -16,7 +17,11 @@ const Dashboard = () => {
   }
 
   return user ? (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.5 } }}
+    >
       <Container>
         <Nav />
         <Header />
@@ -25,7 +30,7 @@ const Dashboard = () => {
         </ContainerMain>
       </Container>
       {modal && <Modal />}
-    </>
+    </motion.div>
   ) : (
     <Navigate to="/login" replace />
   );

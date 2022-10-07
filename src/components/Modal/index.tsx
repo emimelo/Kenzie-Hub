@@ -18,6 +18,7 @@ import { IoIosClose } from "react-icons/io";
 import toast from "react-hot-toast";
 import ToastStyle from "../ToastStyle/styles";
 import { AuthContext } from "../../providers/AuthContext";
+import { motion } from "framer-motion";
 
 interface ITech {
   title: string;
@@ -44,7 +45,7 @@ const Modal = () => {
 
       setTech((oldTech) => [...oldTech, newTech]);
 
-      toast.success("Tecnologia criada com sucesso!", ToastStyle);
+      toast.success("Tecnologia cadastrada com sucesso!", ToastStyle);
       setModal(false);
     } catch {
       toast.error(
@@ -55,35 +56,37 @@ const Modal = () => {
   };
 
   return (
-    <ContainerModal>
-      <Container>
-        <ModalForm>
-          <DivClose>
-            <h2>Cadastrar Tecnologia</h2>
-            <CloseModal onClick={() => setModal(false)}>
-              <IoIosClose />
-            </CloseModal>
-          </DivClose>
-          <form onSubmit={handleSubmit(createTech)}>
-            <label htmlFor="title">Nome</label>
-            <input
-              type="text"
-              placeholder="Tecnologia"
-              {...register("title")}
-            />
-            <span>{errors.title?.message}</span>
+    <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}>
+      <ContainerModal>
+        <Container>
+          <ModalForm>
+            <DivClose>
+              <h2>Cadastrar Tecnologia</h2>
+              <CloseModal onClick={() => setModal(false)}>
+                <IoIosClose />
+              </CloseModal>
+            </DivClose>
+            <form onSubmit={handleSubmit(createTech)}>
+              <label htmlFor="title">Nome</label>
+              <input
+                type="text"
+                placeholder="Tecnologia"
+                {...register("title")}
+              />
+              <span>{errors.title?.message}</span>
 
-            <label htmlFor="status">Selecionar status</label>
-            <select {...register("status")}>
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
-            </select>
-            <button type="submit">Cadastrar</button>
-          </form>
-        </ModalForm>
-      </Container>
-    </ContainerModal>
+              <label htmlFor="status">Selecionar status</label>
+              <select {...register("status")}>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+              </select>
+              <button type="submit">Cadastrar</button>
+            </form>
+          </ModalForm>
+        </Container>
+      </ContainerModal>
+    </motion.div>
   );
 };
 
