@@ -13,11 +13,10 @@ const ContainerMain = styled.div`
     120deg,
     var(--color-grey-4),
     var(--color-grey-4),
-    var(--color-primary-focus),
     var(--color-primary-focus)
   );
 
-  background-size: 400% 400%;
+  background-size: 300% 300%;
   animation: colors 15s ease infinite;
 
   @keyframes colors {
@@ -26,7 +25,7 @@ const ContainerMain = styled.div`
     }
 
     50% {
-      background-position: 30% 50%;
+      background-position: 60% 50%;
     }
 
     100% {
@@ -47,7 +46,7 @@ const ContainerMain = styled.div`
     margin-bottom: 1.25rem;
   }
 
-  div {
+  .container-form {
     display: flex;
     justify-content: center;
 
@@ -66,7 +65,7 @@ const ContainerMain = styled.div`
       font-size: 1.563rem;
       margin-bottom: 2.188rem;
     }
-    div {
+    .container-form {
       width: 23.063rem;
       height: 31.375rem;
     }

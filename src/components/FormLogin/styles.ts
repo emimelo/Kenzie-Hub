@@ -56,7 +56,7 @@ const Form = styled.form`
     margin-bottom: 0.615rem;
   }
 
-  button {
+  .btn-signIn {
     height: 2.406rem;
 
     font-size: 0.802rem;
@@ -123,7 +123,8 @@ const Form = styled.form`
       font-size: 0.75rem;
     }
 
-    button {
+    button,
+    .btn-signIn {
       font-size: 1rem;
       height: 3rem;
     }
@@ -139,4 +140,48 @@ const Form = styled.form`
   }
 `;
 
-export { Form };
+const ContainerPassword = styled.div`
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: auto;
+  position: relative;
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    right: 0;
+
+    position: absolute;
+    background-color: transparent;
+
+    padding-right: 10px;
+  }
+  svg {
+    right: 0;
+    bottom: 10px;
+
+    color: var(--color-grey-1);
+
+    transition: 0.5s;
+
+    width: 14px;
+
+    &:hover {
+      color: var(--color-grey-0);
+    }
+  }
+
+  @media screen and (min-width: 425px) {
+    svg {
+      width: 16px;
+    }
+  }
+`;
+
+export { Form, ContainerPassword };

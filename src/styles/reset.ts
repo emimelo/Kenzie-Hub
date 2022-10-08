@@ -11,7 +11,7 @@ const GlobalReset = createGlobalStyle`
 }
 
 ::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 14px 14px var(--color-primary-negative);
+  box-shadow: inset 0 0 14px 14px var(--color-grey-3);
   border: solid 4px var(--color-grey-4);
 
   border-radius: 14px;
@@ -22,7 +22,7 @@ const GlobalReset = createGlobalStyle`
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  box-shadow: inset 0 0 14px 14px var(--color-primary);
+  box-shadow: inset 0 0 14px 14px var(--color-primary-negative);
 }
 
 ::-webkit-scrollbar-track {

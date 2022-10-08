@@ -13,7 +13,7 @@ const Login = () => {
         <header>
           <h1>Kenzie Hub</h1>
         </header>
-        <div>
+        <div className="container-form">
           <FormLogin />
         </div>
       </ContainerMain>

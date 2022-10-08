@@ -12,11 +12,10 @@ const ContainerMain = styled.div`
     120deg,
     var(--color-grey-4),
     var(--color-grey-4),
-    var(--color-primary-focus),
     var(--color-primary-focus)
   );
 
-  background-size: 400% 400%;
+  background-size: 300% 300%;
   animation: colors 15s ease infinite;
 
   @keyframes colors {
@@ -25,7 +24,7 @@ const ContainerMain = styled.div`
     }
 
     50% {
-      background-position: 30% 50%;
+      background-position: 60% 50%;
     }
 
     100% {
