@@ -8,7 +8,30 @@ const ContainerMain = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: var(--color-grey-4);
+  background: linear-gradient(
+    120deg,
+    var(--color-grey-4),
+    var(--color-grey-4),
+    var(--color-primary-focus),
+    var(--color-primary-focus)
+  );
+
+  background-size: 400% 400%;
+  animation: colors 15s ease infinite;
+
+  @keyframes colors {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 30% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
   header {
     width: 90%;
@@ -27,6 +50,7 @@ const ContainerMain = styled.div`
 
   header > div > h1 {
     color: var(--color-primary);
+    text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
     font-size: 1.25rem;
 
@@ -42,6 +66,7 @@ const ContainerMain = styled.div`
     width: 4.971rem;
 
     background-color: var(--color-grey-3);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     color: var(--color-grey-0);
 
     border-radius: 4px;

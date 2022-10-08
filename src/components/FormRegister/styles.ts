@@ -8,6 +8,7 @@ const Form = styled.form`
   width: 100%;
 
   padding: 1.103rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
   h2 {
     color: var(--color-grey-0);
