@@ -1,15 +1,19 @@
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthContext";
 import { IoIosAdd } from "react-icons/io";
 import { useLottie } from "lottie-react";
-import animate from "../../assets/animate.json";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import { AuthContext } from "../../providers/AuthContext";
+import { CrudContext } from "../../providers/CrudContext";
 
 import { CreateTech, DivNoTech } from "./styles";
 import ListTech from "../ListTech";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import animate from "../../assets/animate.json";
 
 const Main = () => {
-  const { tech, setModal } = useContext(AuthContext);
+  const { tech } = useContext(AuthContext);
+  const { setModal } = useContext(CrudContext);
 
   const options = {
     animationData: animate,

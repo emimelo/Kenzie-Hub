@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
-import { AnimatePresence } from "framer-motion";
 
 function RoutesMain() {
   const location = useLocation();

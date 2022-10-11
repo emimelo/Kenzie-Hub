@@ -30,7 +30,16 @@ const ContainerMain = styled.main`
     margin-bottom: 1.25rem;
 
     border-radius: 4px;
-    background-color: var(--color-grey-3);
+
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background: linear-gradient(
+      45deg,
+      var(--color-grey-4),
+      var(--color-grey-3),
+      var(--color-grey-2)
+    );
+
+    background-size: 200% 200%;
 
     overflow-x: auto;
 

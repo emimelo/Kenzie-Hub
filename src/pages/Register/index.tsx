@@ -1,8 +1,9 @@
-import FormRegister from "../../components/FormRegister";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import { ContainerMain, ContainerForm } from "./styles";
-import { motion } from "framer-motion";
+
+import FormRegister from "../../components/FormRegister";
 
 const Register = () => {
   return (

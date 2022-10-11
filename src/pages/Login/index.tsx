@@ -1,6 +1,8 @@
-import FormLogin from "../../components/FormLogin";
-import { ContainerMain } from "./styles";
 import { motion } from "framer-motion";
+
+import { ContainerMain } from "./styles";
+
+import FormLogin from "../../components/FormLogin";
 
 const Login = () => {
   return (

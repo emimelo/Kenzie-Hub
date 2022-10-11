@@ -177,7 +177,7 @@ const ContainerPassword = styled.div`
     }
   }
 
-  @media screen and (min-width: 425px) {
+  @media screen and (min-width: 426px) {
     svg {
       width: 16px;
     }

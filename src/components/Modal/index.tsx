@@ -1,10 +1,8 @@
-import api from "../../services/api";
-
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import schema from "../../validators/modalCreateTech";
-
 import { useContext } from "react";
+import { IoIosClose } from "react-icons/io";
+import { AnimatePresence, motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   ContainerModal,
@@ -14,67 +12,40 @@ import {
   CloseModal,
 } from "./styles";
 
-import { IoIosClose } from "react-icons/io";
-import toast from "react-hot-toast";
-import ToastStyle from "../ToastStyle/styles";
-import { AuthContext } from "../../providers/AuthContext";
-import { AnimatePresence, motion } from "framer-motion";
-
-interface ITech {
-  title: string;
-  status: string;
-}
+import { CrudContext, ITech } from "../../providers/CrudContext";
+import schema from "../../validators/modalCreateTech";
 
 const Modal = () => {
-  const { setTech, setModal, modal } = useContext(AuthContext);
+  const { modal, setModal, createTech } = useContext(CrudContext);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ITech>({
     resolver: yupResolver(schema),
   });
 
-  const createTech = async (data: ITech) => {
-    try {
-      const token = localStorage.getItem("@user:token");
-
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
-
-      const { data: newTech } = await api.post("/users/techs", data);
-
-      setTech((oldTech) => [...oldTech, newTech]);
-
-      toast.success("Tecnologia cadastrada com sucesso!", ToastStyle);
-      setModal(false);
-    } catch {
-      toast.error(
-        "Ops! Você já possui essa tecnologia cadastrada.",
-        ToastStyle
-      );
-    }
-  };
-
-  const backdrop = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
-  };
-
   return (
     <AnimatePresence>
       {modal && (
         <motion.div
-          variants={backdrop}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.2 } }}
+          exit={{ opacity: 0, transition: { duration: 0.2 } }}
         >
           <ContainerModal>
             <Container>
               <ModalForm>
                 <DivClose>
                   <h2>Cadastrar Tecnologia</h2>
-                  <CloseModal onClick={() => setModal(false)}>
+                  <CloseModal
+                    onClick={() => {
+                      setModal(false);
+                      reset();
+                    }}
+                  >
                     <IoIosClose />
                   </CloseModal>
                 </DivClose>

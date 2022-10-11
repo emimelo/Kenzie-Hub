@@ -35,7 +35,17 @@ const NavStyle = styled.nav`
     transition: 0.5s;
 
     &:hover {
-      background-color: var(--color-grey-1);
+      background-color: var(--color-negative);
+      svg {
+        color: var(--color-grey-0);
+      }
+    }
+
+    svg {
+      width: 50%;
+      height: 55%;
+
+      color: var(--color-negative);
     }
   }
 

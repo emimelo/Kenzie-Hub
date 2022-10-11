@@ -1,10 +1,12 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Form } from "./styles";
-import schema from "../../validators/registerUser";
 
-import { useContext } from "react";
+import { Form } from "./styles";
+
 import { AuthContext } from "../../providers/AuthContext";
+
+import schema from "../../validators/registerUser";
 
 export interface IUserRegister {
   name: string;

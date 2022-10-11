@@ -1,14 +1,15 @@
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ContainerPassword, Form } from "./styles";
-import schema from "../../validators/loginUser";
-
-import { Link } from "react-router-dom";
-
-import { useContext, useState } from "react";
-import { AuthContext } from "../../providers/AuthContext";
 import { BsEyeFill } from "react-icons/bs";
 import { BsEyeSlashFill } from "react-icons/bs";
+
+import { ContainerPassword, Form } from "./styles";
+
+import schema from "../../validators/loginUser";
+
+import { AuthContext } from "../../providers/AuthContext";
 
 export interface IUserLogin {
   email: string;
@@ -42,21 +43,6 @@ const FormLogin = () => {
       {isView ? (
         <ContainerPassword>
           <input
-            type="password"
-            placeholder="Digite aqui sua senha"
-            {...register("password")}
-          />
-          <button
-            type="button"
-            onClick={() => setIsView(!isView)}
-            className="btn-password"
-          >
-            <BsEyeFill />
-          </button>
-        </ContainerPassword>
-      ) : (
-        <ContainerPassword>
-          <input
             type="text"
             placeholder="Digite aqui sua senha"
             {...register("password")}
@@ -67,6 +53,21 @@ const FormLogin = () => {
             className="btn-password"
           >
             <BsEyeSlashFill />
+          </button>
+        </ContainerPassword>
+      ) : (
+        <ContainerPassword>
+          <input
+            type="password"
+            placeholder="Digite aqui sua senha"
+            {...register("password")}
+          />
+          <button
+            type="button"
+            onClick={() => setIsView(!isView)}
+            className="btn-password"
+          >
+            <BsEyeFill />
           </button>
         </ContainerPassword>
       )}

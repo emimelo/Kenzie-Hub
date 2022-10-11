@@ -1,14 +1,15 @@
-import { createContext, useEffect, useState, ReactNode } from "react";
 import React from "react";
+import toast from "react-hot-toast";
+import { createContext, useEffect, useState, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+
 import api from "../services/api";
 
-import toast from "react-hot-toast";
 import ToastStyle from "../components/ToastStyle/styles";
 import { IUserRegister } from "../components/FormRegister";
 import { IUserLogin } from "../components/FormLogin";
 
-interface ChildrenProps {
+export interface ChildrenProps {
   children: ReactNode;
 }
 
@@ -16,8 +17,6 @@ interface IAuthContext {
   signRegister: (data: IUserRegister) => Promise<void>;
   signIn: (data: IUserLogin) => Promise<void>;
   setTech: React.Dispatch<React.SetStateAction<ITech[]>>;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  modal: boolean;
   loading: boolean;
   user: IUser;
   tech: ITech[];
@@ -56,7 +55,6 @@ const AuthProvider = ({ children }: ChildrenProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [tech, setTech] = useState<ITech[]>([] as ITech[]);
   const [loading, setLoading] = useState(true);
-  const [modal, setModal] = useState(false);
 
   const signRegister = async (data: IUserRegister) => {
     try {
@@ -110,14 +108,12 @@ const AuthProvider = ({ children }: ChildrenProps) => {
   return (
     <AuthContext.Provider
       value={{
-        signIn,
-        signRegister,
-        setTech,
         user,
         loading,
         tech,
-        modal,
-        setModal,
+        signIn,
+        signRegister,
+        setTech,
       }}
     >
       {children}

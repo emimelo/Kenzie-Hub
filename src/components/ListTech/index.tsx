@@ -1,31 +1,21 @@
-import { List } from "./styles";
-import { CgTrash } from "react-icons/cg";
-
-import api from "../../services/api";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthContext";
+
+import { CrudContext } from "../../providers/CrudContext";
+
+import { List } from "./styles";
 
 const ListTech = ({ list }: any) => {
-  const { setTech } = useContext(AuthContext);
-
-  const techDelete = async () => {
-    const token = localStorage.getItem("@user:token");
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
-    await api.delete(`/users/techs/${list.id}`);
-
-    setTech((oldTechs) => oldTechs.filter((elem) => elem.id !== list.id));
-  };
+  const { openModal } = useContext(CrudContext);
 
   return (
-    <List>
-      <h2>{list.title}</h2>
-      <div>
-        <span>{list.status}</span>
-        <button onClick={techDelete}>
-          <CgTrash />
-        </button>
-      </div>
-    </List>
+    <>
+      <List onClick={() => openModal(list)}>
+        <h2>{list.title}</h2>
+        <div>
+          <span>{list.status}</span>
+        </div>
+      </List>
+    </>
   );
 };
 

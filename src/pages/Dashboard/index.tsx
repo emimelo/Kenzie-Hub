@@ -1,14 +1,18 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+
 import { AuthContext } from "../../providers/AuthContext";
 
+import { motion } from "framer-motion";
 import { Container, ContainerMain } from "./styles";
+
 import Modal from "../../components/Modal";
+import ModalEdit from "../../components/ModalEdit";
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
-import { motion } from "framer-motion";
 import Loading from "../../components/Loading";
+import ModalConfirmDelete from "../../components/ModalConfirmDelete";
 
 const Dashboard = () => {
   const { user, loading } = useContext(AuthContext);
@@ -31,6 +35,8 @@ const Dashboard = () => {
         </ContainerMain>
       </Container>
       <Modal />
+      <ModalEdit />
+      <ModalConfirmDelete />
     </motion.div>
   ) : (
     <Navigate to="/login" replace />

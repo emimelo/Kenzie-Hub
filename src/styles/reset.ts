@@ -12,7 +12,7 @@ const GlobalReset = createGlobalStyle`
 
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 14px 14px var(--color-grey-3);
-  border: solid 4px var(--color-grey-4);
+  border: solid 4px transparent;
 
   border-radius: 14px;
 }

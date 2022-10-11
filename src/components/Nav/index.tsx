@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
+
 import { NavStyle } from "./styles";
 
 const Nav = () => {
@@ -10,7 +12,7 @@ const Nav = () => {
     <NavStyle>
       <h1>Kenzie Hub</h1>
       <Link to={"/login"} onClick={clearLocalStorage}>
-        Sair
+        <FiLogOut />
       </Link>
     </NavStyle>
   );
