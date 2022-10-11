@@ -46,6 +46,7 @@ const FormLogin = () => {
             type="text"
             placeholder="Digite aqui sua senha"
             {...register("password")}
+            autoComplete="off"
           />
           <button
             type="button"

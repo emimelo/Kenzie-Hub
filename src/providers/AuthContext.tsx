@@ -91,7 +91,7 @@ const AuthProvider = ({ children }: ChildrenProps) => {
         try {
           api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-          const { data } = await api.get<any>("/profile");
+          const { data } = await api.get("/profile");
           setUser(data);
           setTech(data.techs);
           navigate("/dashboard", { replace: true });

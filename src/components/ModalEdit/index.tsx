@@ -12,7 +12,8 @@ import {
   ContainerButtons,
 } from "./styles";
 
-import { CrudContext, ITech } from "../../providers/CrudContext";
+import { CrudContext } from "../../providers/CrudContext";
+import { ITech } from "../../providers/AuthContext";
 
 const ModalEdit = () => {
   const { modalEdit, setModalEdit, setModalConfirmDelete, updateTech, list } =
@@ -42,7 +43,12 @@ const ModalEdit = () => {
                     <IoIosClose />
                   </CloseModal>
                 </DivClose>
-                <form onSubmit={handleSubmit(updateTech)}>
+                <form
+                  onSubmit={(e) => {
+                    handleSubmit(updateTech)(e);
+                    reset();
+                  }}
+                >
                   <label htmlFor="title">Nome do Projeto</label>
                   <input type="text" placeholder={list.title} disabled={true} />
 

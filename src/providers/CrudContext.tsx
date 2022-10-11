@@ -4,7 +4,7 @@ import { SubmitHandler } from "react-hook-form/dist/types/form";
 
 import api from "../services/api";
 
-import { AuthContext } from "./AuthContext";
+import { AuthContext, ITech } from "./AuthContext";
 import { ChildrenProps } from "./AuthContext";
 
 import { ToastError, ToastSuccess } from "../components/ToastStyle/styles";
@@ -16,17 +16,11 @@ interface ICrudContext {
   createTech: SubmitHandler<ITech>;
   updateTech: SubmitHandler<ITech>;
   techDelete: () => Promise<void>;
-  openModal: ({ listTech }: any) => void;
+  openModal: (listTech: ITech) => void;
   modal: boolean;
   modalEdit: boolean;
   modalConfirmDelete: boolean;
   list: ITech;
-}
-
-export interface ITech {
-  status: string;
-  title: string;
-  id?: string;
 }
 
 export const CrudContext = createContext<ICrudContext>({} as ICrudContext);
@@ -59,7 +53,7 @@ const CrudProvider = ({ children }: ChildrenProps) => {
     }
   };
 
-  const openModal = (listTech: any) => {
+  const openModal = (listTech: ITech) => {
     setModalEdit(true);
     setList(listTech);
   };

@@ -12,7 +12,8 @@ import {
   CloseModal,
 } from "./styles";
 
-import { CrudContext, ITech } from "../../providers/CrudContext";
+import { CrudContext } from "../../providers/CrudContext";
+import { ITech } from "../../providers/AuthContext";
 import schema from "../../validators/modalCreateTech";
 
 const Modal = () => {
@@ -49,7 +50,12 @@ const Modal = () => {
                     <IoIosClose />
                   </CloseModal>
                 </DivClose>
-                <form onSubmit={handleSubmit(createTech)}>
+                <form
+                  onSubmit={(e) => {
+                    handleSubmit(createTech)(e);
+                    reset();
+                  }}
+                >
                   <label htmlFor="title">Nome</label>
                   <input
                     type="text"
