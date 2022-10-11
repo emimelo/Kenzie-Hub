@@ -7,7 +7,7 @@ import api from "../services/api";
 import { AuthContext } from "./AuthContext";
 import { ChildrenProps } from "./AuthContext";
 
-import ToastStyle from "../components/ToastStyle/styles";
+import { ToastError, ToastSuccess } from "../components/ToastStyle/styles";
 
 interface ICrudContext {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,7 +26,7 @@ interface ICrudContext {
 export interface ITech {
   status: string;
   title: string;
-  id: string | null;
+  id?: string;
 }
 
 export const CrudContext = createContext<ICrudContext>({} as ICrudContext);
@@ -49,12 +49,12 @@ const CrudProvider = ({ children }: ChildrenProps) => {
 
       setTech((oldTech) => [...oldTech, newTech]);
 
-      toast.success("Tecnologia cadastrada com sucesso!", ToastStyle);
+      toast.success("Tecnologia cadastrada com sucesso!", ToastSuccess);
       setModal(false);
     } catch {
       toast.error(
         "Ops! Você já possui essa tecnologia cadastrada.",
-        ToastStyle
+        ToastError
       );
     }
   };
@@ -79,10 +79,10 @@ const CrudProvider = ({ children }: ChildrenProps) => {
 
       setTech([updatedTech, ...oldTechs]);
 
-      toast.success("Tecnologia atualizada com sucesso!", ToastStyle);
+      toast.success("Tecnologia atualizada com sucesso!", ToastSuccess);
       setModalEdit(false);
     } catch {
-      toast.error("Ops! Você algo deu errado.", ToastStyle);
+      toast.error("Ops! Algo deu errado, tente novamente.", ToastError);
     }
   };
 
@@ -92,7 +92,7 @@ const CrudProvider = ({ children }: ChildrenProps) => {
     await api.delete(`/users/techs/${list.id}`);
 
     setTech((oldTechs) => oldTechs.filter((elem) => elem.id !== list.id));
-    toast.success("Tecnologia deletada com sucesso!", ToastStyle);
+    toast.success("Tecnologia deletada com sucesso!", ToastSuccess);
     setModalConfirmDelete(false);
     setModalEdit(false);
   };

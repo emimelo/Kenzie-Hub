@@ -1,4 +1,4 @@
-const ToastStyle = {
+export const ToastError = {
   style: {
     borderRadius: "4px",
     background: "var(--color-primary-negative)",
@@ -7,4 +7,11 @@ const ToastStyle = {
   },
 };
 
-export default ToastStyle;
+export const ToastSuccess = {
+  style: {
+    borderRadius: "4px",
+    background: "var(--color-primary)",
+    color: "var(--color-grey-0)",
+    border: "2px solid var(--color-primary-focus)",
+  },
+};

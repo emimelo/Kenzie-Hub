@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import api from "../services/api";
 
-import ToastStyle from "../components/ToastStyle/styles";
+import { ToastError, ToastSuccess } from "../components/ToastStyle/styles";
 import { IUserRegister } from "../components/FormRegister";
 import { IUserLogin } from "../components/FormLogin";
 
@@ -60,10 +60,10 @@ const AuthProvider = ({ children }: ChildrenProps) => {
     try {
       await api.post("/users", data);
 
-      toast.success("Conta criada com sucesso!", ToastStyle);
+      toast.success("Conta criada com sucesso!", ToastSuccess);
       navigate("/login", { replace: true });
     } catch {
-      toast.error("Ops! Já existe um cadastro com este email.", ToastStyle);
+      toast.error("Ops! Já existe um cadastro com este email.", ToastError);
     }
   };
 
@@ -76,10 +76,10 @@ const AuthProvider = ({ children }: ChildrenProps) => {
       localStorage.setItem("@user:id", userResponse.id);
 
       setUser(userResponse);
-      toast.success("Bem vindo(a)!", ToastStyle);
+      toast.success("Bem vindo(a)!", ToastSuccess);
       navigate("/dashboard", { replace: true });
     } catch {
-      toast.error("Email e/ou senha inválidos.", ToastStyle);
+      toast.error("Email e/ou senha inválidos.", ToastError);
     }
   };
 
