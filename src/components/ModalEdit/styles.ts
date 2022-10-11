@@ -103,7 +103,7 @@ const ModalForm = styled.div`
 
       height: 2.406rem;
 
-      font-size: 1rem;
+      font-size: 0.802rem;
       font-weight: 500;
 
       color: var(--color-grey-0);
@@ -139,6 +139,7 @@ const ModalForm = styled.div`
 
       button {
         height: 3rem;
+        font-size: 1rem;
       }
     }
   }

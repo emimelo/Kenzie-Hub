@@ -13,7 +13,7 @@ const ContainerModal = styled.div`
   left: 0;
   z-index: 1;
 
-  background-color: rgba(18, 18, 20, 0.9);
+  background-color: rgba(18, 18, 20, 0.8);
 `;
 
 const Container = styled.div`
@@ -92,7 +92,7 @@ const ContainerButtons = styled.div`
 
     height: 2.406rem;
 
-    font-size: 1rem;
+    font-size: 0.802rem;
     font-weight: 500;
 
     color: var(--color-grey-0);
@@ -118,6 +118,7 @@ const ContainerButtons = styled.div`
   @media screen and (min-width: 768px) {
     button {
       height: 2.8125rem;
+      font-size: 1rem;
     }
   }
 `;
