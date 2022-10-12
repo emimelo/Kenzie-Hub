@@ -34,18 +34,16 @@ const List = styled.li`
 
   div {
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    gap: 0.313rem;
-    min-height: inherit;
+    flex-direction: inherit;
 
-    align-items: end;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: inherit;
 
     span {
       font-size: 0.761rem;
       font-weight: 400;
-
-      margin: 0 8px 8px 0;
 
       color: var(--color-grey-1);
     }
@@ -66,23 +64,6 @@ const List = styled.li`
         border-radius: 50%;
 
         transition: 0.3s;
-      }
-    }
-  }
-
-  @media screen and (min-width: 426px) {
-    div {
-      flex-direction: inherit;
-      gap: 1.563rem;
-
-      align-items: center;
-
-      span {
-        margin: 0;
-      }
-
-      button {
-        align-self: flex-start;
       }
     }
   }
