@@ -3,7 +3,7 @@
 
 
 ## Kenzie Hub / emimelo
-A Kenzie Hub é um site para desenvolvedores cadastrarem suas tecnologias, determinarem os status de suas tecnologias (iniciante, intermediário, avançado) ao criarem sua conta e monitorar o seu avanço técnico, podendo também editar e deletar suas tecnologias quando for da sua vontade :)
+A Kenzie Hub é um site para desenvolvedores listarem suas tecnologias, ao criar sua conta você pode selecionar o módulo em que se encontra no seu curso e após o login, ter acesso a seu perfil e cadastrar suas tecnologias, determinando o status (iniciante, intermediário, avançado) e monitorar o seu avanço técnico, podendo também editar e deletar suas tecnologias quando for da sua vontade :)
 
 
 ## Tecnologia 
