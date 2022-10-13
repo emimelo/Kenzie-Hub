@@ -61,7 +61,7 @@ As principais funcionalidades da aplicação são:
 
  - Fazer o cadastro.
  - Fazer o login.
- - Adicionar suas tecnologia <3
+ - Adicionar suas tecnologias <3
  - Editar suas tecnologias.
  - Deletar suas tecnologias.
 
