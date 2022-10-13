@@ -1,70 +1,75 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo of the project](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Logo_KenzieHub.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Kenzie Hub / emimelo
+A Kenzie Hub é um site para desenvolvedores cadastrarem suas tecnologias, determinarem os status de suas tecnologias (iniciante, intermediário, avançado) ao criarem sua conta e monitorar o seu avanço técnico, podendo também editar e deletar suas tecnologias quando for da sua vontade :)
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologia 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Aqui estão as tecnologias usadas neste projeto.
 
-### `yarn test`
+* TypeScript
+* HTML
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Serviço usado
 
-### `yarn build`
+* Github
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Bibliotecas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Yup
+* Axios
+* React
+* React-icons
+* React-hot-toast
+* React-hook-form
+* React-router-dom
+* React-transition-group
+* Lottie-react
+* Framer-motion
+* Styled-components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Como usar
 
-### `yarn eject`
+### 1 - Ao acessar você verá a página de login <3
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Login image](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Login.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2 - Caso ainda não tenha uma conta cadastrada, você pode acessar nossa página de cadastro 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Register image](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Register_1.png)
+![Register image](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Register_2.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3 - Após logar você pode ter acesso a Home! :D
 
-## Learn More
+![Home image](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Home.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4 - E você também pode cadastrar novas tecnologias!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Modal Create Tech](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Home_Modal_1.png)
 
-### Code Splitting
+### 5 - Assim como editar e deletar, caso seja da sua escolha :)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Modal Edit Tech](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Home_Modal_2.png)
+![Modal Delete Tech](https://github.com/emimelo/Kenzie-Hub/blob/main/src/readme/Home_Modal_3.png)
 
-### Analyzing the Bundle Size
+## Funcionalidades
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+As principais funcionalidades da aplicação são:
 
-### Making a Progressive Web App
+ - Adicionar suas tecnologia <3
+ - Editar suas tecnologias.
+ - Deletar suas tecnologias.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Links
+  - Deploy: https://kenzie-hub-amber.vercel.app/login
+  - Repository: https://github.com/emimelo/Kenzie-Hub
 
-### Advanced Configuration
+  ## Autores
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  * **Emilly de Melo Amorim** 
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  Por favor, siga o github e junte-se a nós!
+  Obrigado por me visitar! :D
